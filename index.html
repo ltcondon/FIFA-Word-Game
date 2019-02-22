@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="/Javascript/game.js"></script>
+    <script src="Javascript/game.js"></script>
 
 
 
@@ -15,23 +15,35 @@
   
   <body>
       
-    <div class="container-fluid">
-      <h1>FIFA Team of the Year Hangman Challenge</h1>
+    <div class="container-fluid" id="masthead">
+      <div class= "row" id="title-bar">
+        <div class= "col">
+          <h1>FIFA Team of the Year Hangman Challenge</h1>
+        </div>
+      </div>
+      <div class= "row">
+        <div class= "col-8" id= "question-box">
+          <h2><span id="question-text">How well do you know your FIFA players??</span></h2>
+        </div>
+        <div class= "col-4" id= "direction-box">
+          <h3><span id="direction-text">Press any key to start!</span></h3>
+        </div>
+      </div>
+      <div class= "row">
+        <div class= "col-3" id= "score&guess-box">
+          <h4>Score: <span id="current-score"></span></h4>
+          <h4>Guesses Remaining: <span id="guesses-remaining"></span></h4>
+        </div>
+        <div class= "col-6" id="current-player-box">
+          <h3><span id="current-player-guess">WHO AM I</span></h3>
+        </div>
+        <div class="col-3" id= "incorect-guesses-box">
+          <h3>Incorrect Guesses:</h3>
+        </div>
+      </div>
     </div>
-    <div class= "container">
-      <h3> <span id="direction-text">How well do you know your FIFA 19 players?? Press any key to start the game!</span></h2>
-  
-      <h2>Question: <span id="current-question"> <strong>Who AM I??</strong></span></h2>
-      <hr>
-      <h4>You guessed... <span id="user-guess"> <strong>Guesses</strong></span></h2>
-      <div class="container">
-        <div class="row">
-          <div class = "col"
-          <h4> Wrong guesses: </h4>
 
-    </div>
-            </div>  
-
+    <div class= "container"
 
     
   
