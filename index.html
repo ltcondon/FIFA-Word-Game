@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="/Javascript/game.js"></script>
 
 
 
@@ -14,71 +15,32 @@
   
   <body>
       
-    <div class="container">
+    <div class="container-fluid">
+      <h1>FIFA Team of the Year Hangman Challenge</h1>
+    </div>
+    <div class= "container">
+      <h3> <span id="direction-text">How well do you know your FIFA 19 players?? Press any key to start the game!</span></h2>
+  
+      <h2>Question: <span id="current-question"> <strong>Who AM I??</strong></span></h2>
+      <hr>
+      <h4>You guessed... <span id="user-guess"> <strong>Guesses</strong></span></h2>
+      <div class="container">
+        <div class="row">
+          <div class = "col"
+          <h4> Wrong guesses: </h4>
 
-    <h1>Question Game</h1>
-
-    <h2>How many questions can you answer correctly? Press 't' for 'TRUE' or 'f' for 'FALSE'.</h2>
-            <h2>Question: <span id="current-question"> <strong>Who AM I??</strong></span></h2>
-            <hr>
-            <h4>You guessed... <span id="user-guess"> <strong>Guesses</strong></span></h2>
-            <div class="container">
-              <div class="row">
-                <div class = "col"
-                <h4> Wrong guesses: </h4>
-
-                </div>
+    </div>
             </div>  
 
 
     
-    
-    
-    
-    
-        <!-- We have to put this at the end of our document to ensure the user-text
-         span exists when we try to access it. -->
-    <script type="text/javascript">
+  
 
-      var questions = [
-          player1 = "David De Gea",
-          player2 = "Marcelo",
-          player3 = "Sergio Ramos",
-          player4 = "Raphael Varane",
-          player5 = "Virgil Van Dijk",
-          player6 = "N'golo Kante",
-          player7 = "Luca Modric",
-          player8 = "Kevin De Bruyne",
-          player9 = "Kylian Mbappe",
-          player10 = "Lionel Messi",
-          player11 = "Christiano Ronaldo",
-          player12 = "Neymar Jr"
-        ];
 
-    // A random question is prompted:
-  document.onkeyup = function(event) {
-    var currentQuestion;
-    if ((event.key === "s") || (event.key === "n")) {
-        let currentQuestion = questions[Math.floor(Math.random() * questions.length)].q;
-        var displayQuestion = document.getElementById("current-question");
-            displayQuestion.textContent = currentQuestion;
 
-    // User's answer is compared to question's answer:
-        if (((event.key === "t") && (a.currentQuestion === true)) || ((event.key === "f") && (a.currentQuestion === false))) {
-            var correctPrompt = document.getElementById("current-question");
-            correctPrompt.textContent = "Correct! Nice Job.";
-        }
-        
-        else if (((event.key === "t") && (a.currentQuestion === false)) || ((event.key === "f") && (a.currentQuestion === true))) {
-            var incorrectPrompt = document.getElementById("current-question");
-            incorrectPrompt.textContent = "Sorry! That's incorrect.";
-        } 
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-        else {
-            console.log("n/a");
-        }
-    }
-  };
-    </script>
 </body>
 </html>
