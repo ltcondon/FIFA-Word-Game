@@ -17,13 +17,12 @@ document.getElementById("start-button").addEventListener("click", function(){
     runGame();
     
 });
-      /// A player from the player list is randomly selected:
-    // randsplice(playerList);
 
-      
+
+    // Game-round initiated:
     function runGame() {
 
-
+      /// A player from the player list is randomly selected:
         var randomPlayerUpper = playerList[Math.floor(Math.random() * playerList.length)];
         var randomPlayer = randomPlayerUpper.toLowerCase();
     
@@ -31,6 +30,15 @@ document.getElementById("start-button").addEventListener("click", function(){
         var blankPlayerGuess = [];
             for (var i=0; i<randomPlayer.length; i++){
             blankPlayerGuess[i] = "_";
+            }
+            for (var k=0; k<randomPlayer.length; k++) {
+                if (randomPlayer[k] === " ") {
+                    blankPlayerGuess[k] = " ";
+                }
+                else if (randomPlayer[k] === "'") {
+                    blankPlayerGuess[k] = "'";
+                }
+            blankPlayerGuess
             }
     
         /// That series of empty spaces is displayed on the screen in the "current-player-guess" box:
@@ -50,7 +58,7 @@ document.getElementById("start-button").addEventListener("click", function(){
             displayWrongGuesses.textContent = wrongGuesses;
 
         document.onkeyup = function(event) {
-            var allowedGuesses = [" ", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]; 
+            var allowedGuesses = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]; 
             var userGuessUpper = event.key;
             var userGuess = userGuessUpper.toLowerCase(); 
             
@@ -63,9 +71,9 @@ document.getElementById("start-button").addEventListener("click", function(){
                      }
                   }
                         
-                if(!randomPlayer.includes(userGuess)){
+                if ((!randomPlayer.includes(userGuess)) && (!wrongGuesses.includes(" " + userGuess))) {
                       remainingGuesses--;
-                      wrongGuesses.push(userGuess + ", ");
+                      wrongGuesses.push(" " + userGuess);
                       displayRemainingGuesses.textContent = remainingGuesses;
                       displayWrongGuesses.textContent = wrongGuesses;
                   }
