@@ -13,26 +13,6 @@ var remainingGuesses = 10;
 var displayScore = document.getElementById("current-score");
     displayScore.textContent = score;
 
-// Game restarts if user reaches end of array or runs out of guesses:
-function restart() {
-    
-    // Resets options in array:
-    playerList = ["David De Gea", "Marcelo", "Sergio Ramos", "Raphael Varane", "Virgil Van Dijk", "N'golo Kante", "Luka Modric", "Kevin De Bruyne", "Kylian Mbappe", "Lionel Messi", "Christiano Ronaldo", "Neymar Jr"];    
-    
-    // Resets any progress from previous attempt(s):
-    score = 0;
-    remainingGuesses = 10;
-    wrongGuesses = [];
-    
-    // Displays correct stats on-screen:
-    displayScore.textContent = score;    
-    displayWrongGuesses = document.getElementById("incorrect-guesses");
-            displayWrongGuesses.textContent = wrongGuesses;
-
-    var displayEmpty = document.getElementById("current-player-guess");
-            displayEmpty.textContent = "WHO AM I??";
-}
-
 // Start button starts/resets game: 
 document.getElementById("start-button").addEventListener("click", function(){
     restart();
@@ -40,17 +20,16 @@ document.getElementById("start-button").addEventListener("click", function(){
     
 });
 
-
     // Game-round initiated:
     function runGame() {
 
-      /// A player from the player list is randomly selected:
+      /// A player is randomly selected and removed from list:
         var randomPlayerIndex = [Math.floor(Math.random() * playerList.length)];
         var randomPlayerUpper = playerList[randomPlayerIndex];
         var removeSelection = playerList.splice(randomPlayerIndex, 1);
         var randomPlayer = randomPlayerUpper.toLowerCase();
     
-        /// A series of empty spaces is generated, equal to the number of characters in the selected player's name:
+        /// A series of empty spaces is generated, equal to the number of characters in the selected player's name (not including spaces):
         var blankPlayerGuess = [];
             for (var i=0; i<randomPlayer.length; i++){
             blankPlayerGuess[i] = "_";
@@ -104,10 +83,9 @@ document.getElementById("start-button").addEventListener("click", function(){
                       displayWrongGuesses.textContent = wrongGuesses;
                   }
             }
-
              
               
-          /// Once current guessword is completely filled with correct characters, the user is alerted they were correct, their score increases, and a new guessword is generated:
+          /// Once current current player guess is completely filled with correct characters, the user is alerted they were correct, their score increased, and a new guessword generated:
           if(!blankPlayerGuess.includes("_")) {
             alert("You won!");
             score++;
@@ -122,3 +100,23 @@ document.getElementById("start-button").addEventListener("click", function(){
           }
         }
     }
+
+    // Game restarts if user reaches end of array or runs out of guesses:
+    function restart() {
+    
+        // Resets options in array:
+        playerList = ["David De Gea", "Marcelo", "Sergio Ramos", "Raphael Varane", "Virgil Van Dijk", "N'golo Kante", "Luka Modric", "Kevin De Bruyne", "Kylian Mbappe", "Lionel Messi", "Christiano Ronaldo", "Neymar Jr"];    
+
+        // Resets any progress from previous attempt(s):
+        score = 0;
+        remainingGuesses = 10;
+        wrongGuesses = [];
+
+        // Displays correct stats on-screen:
+        displayScore.textContent = score;    
+        displayWrongGuesses = document.getElementById("incorrect-guesses");
+                displayWrongGuesses.textContent = wrongGuesses;
+
+        var displayEmpty = document.getElementById("current-player-guess");
+                displayEmpty.textContent = "WHO AM I??";
+}
