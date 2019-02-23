@@ -8,10 +8,14 @@ var playerList = ["David De Gea", "Marcelo", "Sergio Ramos", "Raphael Varane", "
 // }
 // Game initiated and variables assigned:
 
+var gameInProgress = false;
+
 document.getElementById("start-button").addEventListener("click", function(){
-
-
-    /// A player from the player list is randomly selected:
+    gameInProgress = true;
+    
+});
+  if (gameInProgress = true) {
+      /// A player from the player list is randomly selected:
     // randsplice(playerList);
 
     var randomPlayerUpper = playerList[Math.floor(Math.random() * playerList.length)];
@@ -42,22 +46,34 @@ document.getElementById("start-button").addEventListener("click", function(){
     var wrongGuesses = [];
     var displayWrongGuesses = document.getElementById("incorrect-guesses");
         displayWrongGuesses.textContent = wrongGuesses;
-
+      
     document.onkeyup = function(event) {
+          
         var userGuess = event.key;
-
-        
-        for (var j=0; j<randomPlayer.length; j++) {
-            if (randomPlayer[j] === userGuess) {
-                blankPlayerGuess[j] = userGuess;
-             }
-            // else if (randomPlayer[userGuess] === "-1") {
-            else {
-                wrongGuesses.push(userGuess + ", ");
+        if (remainingGuesses > 0) {
+            for (var j=0; j<randomPlayer.length; j++) {
+                if (randomPlayer[j] === userGuess) {
+                    blankPlayerGuess[j] = userGuess;
+                    displayGuess.textContent = blankPlayerGuess;
+                 }
+              }
+                    
+            if (!randomPlayer.includes(userGuess)){
+                  remainingGuesses--;
+                  wrongGuesses.push(userGuess + ", ");
+                  displayRemainingGuesses.textContent = remainingGuesses;
+                  displayWrongGuesses.textContent = wrongGuesses;
+              }
+            
+            if (!blankPlayerGuess.includes("_")) {
+                      alert("You won!");
+                      return;
+              }
             }
         }
+        else {
+            alert("You lost!");
+        }
+          
 
-        remainingGuesses--;
-    
     }
-});
